@@ -6,6 +6,7 @@ import (
 	"os"
 )
 
+// https://adventofcode.com/2020/day/3
 func main() {
 	var treesMet int
 	file, err := os.Open("input.txt")

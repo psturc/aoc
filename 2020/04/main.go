@@ -11,6 +11,7 @@ import (
 
 var passportModel = []string{"byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid", "cid"}
 
+// https://adventofcode.com/2020/day/4
 func main() {
 	passport := make(map[string]string)
 	var passportsValid, passportsDataValid int

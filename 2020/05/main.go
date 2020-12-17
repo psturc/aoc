@@ -9,6 +9,7 @@ import (
 var highestSeatID int
 var seats [128][8]int
 
+// https://adventofcode.com/2020/day/5
 func main() {
 
 	file, _ := os.Open("input.txt")

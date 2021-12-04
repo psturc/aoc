@@ -3,6 +3,7 @@ package utils
 import (
 	"bufio"
 	"os"
+	"strconv"
 )
 
 func FileLinesToSlice(filename string) (slice []string) {
@@ -19,4 +20,12 @@ func FileLinesToSlice(filename string) (slice []string) {
 	}
 
 	return
+}
+
+func StrSliceToIntSlice(in []string) []int {
+	out := make([]int, len(in))
+	for i, s := range in {
+		out[i], _ = strconv.Atoi(s)
+	}
+	return out
 }

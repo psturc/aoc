@@ -50,9 +50,8 @@ func main() {
 				if globalRank == 1 {
 					fmt.Printf("Part 1: %d\n", score)
 				}
-				b.score = score
-				b.rank = globalRank
-				boards[bix] = b
+				boards[bix].score = score
+				boards[bix].rank = globalRank
 			}
 		}
 	}
@@ -80,7 +79,7 @@ func checkScore(b board, draw string) (bool, int) {
 		}
 	}
 	for i := range x {
-		if x[i] >= 5 || y[i] >= 5 {
+		if x[i] == 5 || y[i] == 5 {
 			d, _ := strconv.Atoi(draw)
 			return true, score * d
 		}

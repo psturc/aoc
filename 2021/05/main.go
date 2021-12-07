@@ -53,7 +53,7 @@ func main() {
 				}
 			}
 			// Part 2
-		} else if AbsoluteValue(x1-x2) == AbsoluteValue(y1-y2) {
+		} else if utils.AbsoluteValue(x1-x2) == utils.AbsoluteValue(y1-y2) {
 			for {
 				p := fmt.Sprintf("%d,%d", x1, y1)
 				if _, ok := diagram[p]; !ok {

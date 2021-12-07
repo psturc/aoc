@@ -29,3 +29,10 @@ func StrSliceToIntSlice(in []string) []int {
 	}
 	return out
 }
+
+func AbsoluteValue(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
+}

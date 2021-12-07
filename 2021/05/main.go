@@ -53,7 +53,7 @@ func main() {
 				}
 			}
 			// Part 2
-		} else if absoluteValue(x1-x2) == absoluteValue(y1-y2) {
+		} else if AbsoluteValue(x1-x2) == AbsoluteValue(y1-y2) {
 			for {
 				p := fmt.Sprintf("%d,%d", x1, y1)
 				if _, ok := diagram[p]; !ok {
@@ -85,11 +85,4 @@ func main() {
 	}
 	//fmt.Printf("Part 1: %d\n", res)
 	fmt.Printf("Part 2: %d\n", res)
-}
-
-func absoluteValue(x int) int {
-	if x < 0 {
-		return -x
-	}
-	return x
 }

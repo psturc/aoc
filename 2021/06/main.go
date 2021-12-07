@@ -18,16 +18,20 @@ func main() {
 
 	// Part 1: for i := 0; i < 80; i++ {
 	for i := 0; i < 256; i++ {
-		newMap := map[int]int{0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0}
+		var v int
 		for j := 8; j >= 0; j-- {
-			if j > 0 {
-				newMap[j-1] = gmap[j]
+			if j == 8 {
+				v = gmap[8]
+				gmap[8] = gmap[0]
+			} else if j > 0 {
+				vv := v
+				v = gmap[j]
+				gmap[j] = vv
 			} else {
-				newMap[6] += gmap[j]
-				newMap[8] += gmap[j]
+				gmap[6] += gmap[0]
+				gmap[0] = v
 			}
 		}
-		gmap = newMap
 	}
 
 	var count int

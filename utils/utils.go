@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"os"
 	"strconv"
+	"strings"
 )
 
 func FileLinesToSlice(filename string) (slice []string) {
@@ -35,4 +36,17 @@ func AbsoluteValue(x int) int {
 		return -x
 	}
 	return x
+}
+
+func Contains(slc []string, str string) bool {
+	for _, v := range slc {
+		if v == str {
+			return true
+		}
+	}
+	return false
+}
+
+func IsLowercase(str string) bool {
+	return strings.ToLower(str) == str
 }

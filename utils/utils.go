@@ -47,6 +47,15 @@ func Contains(slc []string, str string) bool {
 	return false
 }
 
+func ContainsInt(slc []int, i int) bool {
+	for _, v := range slc {
+		if v == i {
+			return true
+		}
+	}
+	return false
+}
+
 func IsLowercase(str string) bool {
 	return strings.ToLower(str) == str
 }

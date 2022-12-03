@@ -8,30 +8,55 @@ import (
 func main() {
 	lines := utils.FileLinesToSlice("input.txt")
 	prioritySum := 0
+	threeRowsPrioritySum := 0
 
-	for _, l := range lines {
+	group := map[int]map[byte]bool{
+		0: {},
+		1: {},
+		2: {},
+	}
+
+	for i, l := range lines {
 		fh := map[byte]bool{}
-		sh := map[byte]bool{}
+		lineSolved := false
 
-		for i := range l {
-			if i < len(l)/2 {
-				fh[l[i]] = true
+		for j := range l {
+			group[i%3][l[j]] = true
+			if j < len(l)/2 {
+				fh[l[j]] = true
 				continue
 			}
-			sh[l[i]] = true
-			if _, ok := fh[l[i]]; ok {
-				// A-Z
-				if l[i] < 97 {
-					prioritySum += int(l[i] - 38)
-				} else {
-					// a-z
-					prioritySum += int(l[i] - 96)
+			if _, ok := fh[l[j]]; ok && !lineSolved {
+				prioritySum += getPriorityValue(l[j])
+				lineSolved = true
+			}
+
+		}
+
+		if (i+1)%3 == 0 {
+			for k := range group[0] {
+				if group[1][k] && group[2][k] {
+					threeRowsPrioritySum += getPriorityValue(k)
+					group = map[int]map[byte]bool{
+						0: {},
+						1: {},
+						2: {},
+					}
+					break
 				}
-				break
 			}
 		}
 	}
 
 	fmt.Println("1:", prioritySum)
+	fmt.Println("2:", threeRowsPrioritySum)
+}
 
+func getPriorityValue(b byte) int {
+	if b < 97 {
+		return int(b - 38)
+	} else {
+		// a-z
+		return int(b - 96)
+	}
 }
